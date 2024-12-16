@@ -1,51 +1,35 @@
 import './App.css';
-import { Canvas, useFrame } from "@react-three/fiber" ;
-import { useRef, useState } from "react" ;
-import { config, useSpring, animated } from "@react-spring/three"; 
-
-
-function Box(props) {
-  const ref = useRef();
-  const [clicked, setClicked] = useState(false);
-  const [hovered, setHovered] = useState(false);
-
-  useFrame(() => (ref.current.rotation.x += 0.01));
-
-  const { scale } = useSpring({
-    scale: clicked ? 2 : 1,
-    config: config.wobbly,
-  });
-
-  return (
-    <animated.mesh
-      {...props} 
-      ref={ref}
-      onClick={() => setClicked(!clicked)}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
-      scale={scale}
-      >
-      <boxGeometry args={[1,1,1]} />
-      <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
-    </animated.mesh> 
-  );
-}
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Cube from './components/Cube'; // 立方体コンポーネント
+import ModelViewer from './components/ModelViewer'; // glTFモデル表示コンポーネント
+import ModelViewer2 from './components/ModelViewer2';
 
 function App() {
   return (
-  <>
-    <div id="canvas-container">
-      <Canvas camera={{ position: [0, 0, 5] }}>
-          <Box position={[-1.6, 0, 0]}/>
-          <Box position={[1.6, 0, 0]}/>
-          <ambientLight intensity={0.5} />
-          <spotLight position={[10, 10, 10]} angle={0.5} />
-          <pointLight position={[-10, -10, -10]} />
-      </Canvas>
-    </div>
-    <h1>Threejs Fiber</h1>
-    <a href="">もっと見る</a>
-  </>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/cube">Cube</Link> {/* 立方体のページへのリンク */}
+            </li>
+            <li>
+              <Link to="/model">Millennium falcon</Link> {/* glTFモデルのページへのリンク */}
+            </li>
+            <li>
+              <Link to="/model2">Delorian</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/cube" element={<Cube />} /> {/* 立方体のルート */}
+          <Route path="/model" element={<ModelViewer />} /> {/* glTFモデルのルート */}
+          <Route path="/model2" element={<ModelViewer2 />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

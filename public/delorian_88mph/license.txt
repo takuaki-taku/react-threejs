@@ -1,0 +1,11 @@
+Model Information:
+* title:	Delorian_88mph
+* source:	https://sketchfab.com/3d-models/delorian-88mph-7d2449443bab4ee7ad7e13b9de862bf6
+* author:	dannyjackson (https://sketchfab.com/dannyjackson)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Delorian_88mph" (https://sketchfab.com/3d-models/delorian-88mph-7d2449443bab4ee7ad7e13b9de862bf6) by dannyjackson (https://sketchfab.com/dannyjackson) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

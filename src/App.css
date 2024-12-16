@@ -3,7 +3,7 @@
 }
 
 html,
-body #root {
+body #root{
   width: 100%;
   height: 100vh;
   margin: 0;
@@ -15,7 +15,10 @@ body #root {
     rgba(9, 8, 9, 0.9556197478991597) 100%
   );
 }
-
+div {
+  height: 100%;
+  width: 100%;
+}
 
 #canvas-container {
   height: 100%;
@@ -34,7 +37,6 @@ h1 {
 }
 
 a {
-  position: absolute;
   top: 77%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -44,9 +46,36 @@ a {
   cursor: pointer;
   transition: all 0.2s;
   padding: 10px 20px;
+  
 }
 
 a:hover {
   color: #fff;
   background: #000;
+}
+
+
+
+nav ul {
+  list-style: none; /* リストのマーカーを消す */
+  padding: 0;
+  margin: 0;
+  display: flex; /* 横並びにする */
+  justify-content: center; /* 中央揃え */
+}
+
+nav li {
+  margin: 0 10px; /* リスト項目間の間隔 */
+}
+
+nav a {
+  text-decoration: none; /* 下線を消す */
+  color: #333; /* 文字色 */
+  padding: 5px 10px; /* パディング */
+  border-radius: 5px; /* 角を丸くする */
+  transition: background-color 0.3s ease; /* ホバー時のアニメーション */
+}
+
+nav a:hover {
+  background-color: #eee; /* ホバー時の背景色 */
 }
