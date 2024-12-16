@@ -15,7 +15,7 @@ function App() {
               <Link to="/cube">Cube</Link> {/* 立方体のページへのリンク */}
             </li>
             <li>
-              <Link to="/model">Millennium falcon</Link> {/* glTFモデルのページへのリンク */}
+              <Link to="/model">Millennium Falcon</Link> {/* glTFモデルのページへのリンク */}
             </li>
             <li>
               <Link to="/model2">Delorian</Link>
@@ -30,6 +30,8 @@ function App() {
         </Routes>
       </div>
     </Router>
+
+
   );
 }
 

@@ -4,6 +4,7 @@ import { useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from '@react-three/drei';
 
+
 function Model({ url }) {
   const gltf = useLoader(GLTFLoader, url);
   const mesh = useRef();
