@@ -2,38 +2,50 @@ import React, { Suspense, useEffect, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import { OrbitControls } from '@react-three/drei';
+import * as THREE from 'three'; // THREEをインポート
+import '../ModelViwer.css';
 
+function Ground() {
+  return (
+    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]} receiveShadow> {/* positionを追加 */}
+      <planeGeometry args={[20, 20, 32, 32]} />
+      <meshStandardMaterial color={0x555555} side={THREE.DoubleSide} />
+    </mesh>
+  );
+}
 
 function Model({ url }) {
-  const gltf = useLoader(GLTFLoader, url);
+  const gltf = useLoader(GLTFLoader, url, (loader) => {
+    loader.setMeshoptDecoder(MeshoptDecoder);
+  });
   const mesh = useRef();
 
   useEffect(() => {
     if (gltf) {
-        // モデルのスケールを調整 (必要に応じて数値を変更)
-        gltf.scene.scale.set(0.9, 0.9, 0.9);
-
-        gltf.scene.traverse((child) => {
-            if (child.isMesh) {
-              child.castShadow = true;
-              child.receiveShadow = true;
-            }
-          });
+      gltf.scene.scale.set(0.9, 0.9, 0.9);
+      gltf.scene.traverse((child) => {
+        if (child.isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+          child.geometry.computeBoundingBox(); // カリングのために追加
+        }
+      });
     }
   }, [gltf]);
 
-  return gltf ? <primitive object={gltf.scene} ref={mesh} dispose={null}/> : null;
+  return gltf ? <primitive object={gltf.scene} ref={mesh} dispose={null} /> : null;
 }
 
-function Camera({position, lookAt}) {
-    const { camera } = useThree();
-    useEffect(() => {
-        camera.position.set(...position);
-        camera.lookAt(...lookAt);
-    }, []);
-    useFrame(() => camera.updateProjectionMatrix())
-    return null;
+function Camera({ position, lookAt }) {
+  const { camera } = useThree();
+  useEffect(() => {
+    camera.position.set(...position);
+    camera.lookAt(...lookAt);
+  }, [position, lookAt]);
+  useFrame(() => camera.updateProjectionMatrix());
+  return null;
 }
 
 const ModelViewer = () => {
@@ -43,14 +55,15 @@ const ModelViewer = () => {
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
       <h1>THE MILLENNIUM FALCON</h1>
-      <Canvas shadows={true} camera={{ fov: 75, near: 0.1, far: 1000 }}>{/* Canvasのcamera propsを使用 */}
+      <Canvas shadows camera={{ fov: 75, near: 0.1, far: 1000 }}>
         <ambientLight intensity={0.5} />
-        <directionalLight position={[1, 1, 1]} intensity={1} castShadow />{/* 光源の強度を調整 */}
-        <Camera position={cameraPosition} lookAt={lookAtPosition}/>
+        <directionalLight position={[1, 1, 1]} intensity={1} castShadow />
+        <Camera position={cameraPosition} lookAt={lookAtPosition} />
         <Suspense fallback={null}>
-          <Model url="millennium_falcon/scene.gltf" />
+          <Model url="millennium_falcon/optimized_scene.gltf" />
         </Suspense>
-        <OrbitControls target={[-1,-1, 0]} />
+        <Ground /> {/* Groundコンポーネントを追加 */}
+        <OrbitControls target={[-1, -1, 0]} />
       </Canvas>
     </div>
   );

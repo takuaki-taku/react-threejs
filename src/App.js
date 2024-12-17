@@ -18,7 +18,7 @@ function App() {
               <Link to="/model">Millennium Falcon</Link> {/* glTFモデルのページへのリンク */}
             </li>
             <li>
-              <Link to="/model2">Delorian</Link>
+              <Link to="/model2">Delorian and Subaru</Link>
             </li>
           </ul>
         </nav>
