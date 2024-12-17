@@ -40,7 +40,7 @@ function Model({ url, scale = [1, 1, 1], position = [0, 0, 0] }) {
 }
 
 const ModelViewer2 = () => {
-  const cameraPosition = [200, 80, 200];
+  const cameraPosition = [300, 180, 300];
   const lookAtPosition = [0, 0, 0];
 
   // 各モデルのスケールと位置を調整
