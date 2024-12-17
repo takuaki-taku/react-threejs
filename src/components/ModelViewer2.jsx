@@ -10,7 +10,7 @@ import '../ModelViwer.css';
 function Ground() {
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -50, 0]} receiveShadow> {/* positionを追加 */}
-      <planeGeometry args={[700, 700, 32, 32]} />
+      <planeGeometry args={[7000, 7000, 32, 32]} />
       <meshStandardMaterial color={0x555555} side={THREE.DoubleSide} />
     </mesh>
   );
@@ -45,10 +45,10 @@ const ModelViewer2 = () => {
 
   // 各モデルのスケールと位置を調整
   const delorianScale = [2,2,2]; 
-  const delorianPosition = [-100, 0, 0]; 
+  const delorianPosition = [120, -10, 0]; 
 
   const subaruScale = [0.6, 0.6, 0.6]; 
-  const subaruPosition = [100, -30, 0];
+  const subaruPosition = [-120, -45, 0];
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
@@ -56,10 +56,10 @@ const ModelViewer2 = () => {
       <Canvas shadows camera={{ position: cameraPosition, fov: 75, near: 0.1, far: 1000 }}>
         <ambientLight intensity={0.5} />
         <spotLight
-          position={[0, 150, 0]} // ライトの位置（真上）
-          angle={3} // ライトの広がり
+          position={[100, 150, 15]} // ライトの位置（真上）
+          angle={2} // ライトの広がり
           penumbra={5} // ライトの境界のぼかし
-          intensity={500000} // ライトの強度
+          intensity={200000} // ライトの強度
           castShadow
           shadow-mapSize-width={1024} // 影の解像度
           shadow-mapSize-height={1024} // 影の解像度

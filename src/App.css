@@ -8,12 +8,7 @@ body #root{
   height: 100vh;
   margin: 0;
   padding: 0;
-  background: rgb(83, 79, 81);
-  background: linear-gradient(
-    117deg,
-    rgba(83, 79, 81, 1) 5%,
-    rgba(9, 8, 9, 0.9556197478991597) 100%
-  );
+  
 }
 div {
   height: 100%;

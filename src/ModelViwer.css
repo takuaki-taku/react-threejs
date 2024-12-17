@@ -10,7 +10,6 @@ html { /* ルート要素のフォントサイズを定義 */
 body {
     background-color: black;
     margin: 0;
-    font-family: 'SF Distant Galaxy';
 }
 
 #heading {
@@ -30,7 +29,8 @@ h1 {
     color: rgb(215, 215, 215);
     margin: 0;
     font-weight: 100;
-    font-size: 2rem; /* rem単位を使用 */
+    font-size: 3rem; /* rem単位を使用 */
+    font-family: 'SF Distant Galaxy';
 }
 
 #progress-container {
@@ -53,7 +53,7 @@ h1 {
         font-size: 12px; /* 小さい画面での基準サイズ */
     }
     h1 {
-        font-size: 1.5rem; /* h1のフォントサイズを調整 */
+        font-size: 2rem; /* h1のフォントサイズを調整 */
     }
         #heading {
         padding: 1rem; /* rem単位を使用 */
