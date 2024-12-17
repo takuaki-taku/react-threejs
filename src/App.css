@@ -54,7 +54,7 @@ a:hover {
 nav ul {
   list-style: none; /* リストのマーカーを消す */
   padding: 0;
-  margin: 0;
+  margin: 20;
   display: flex; /* 横並びにする */
   justify-content: center; /* 中央揃え */
 }
