@@ -9,8 +9,8 @@ import '../ModelViwer.css';
 
 function Ground() {
   return (
-    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]} receiveShadow> {/* positionを追加 */}
-      <planeGeometry args={[20, 20, 32, 32]} />
+    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -50, 0]} receiveShadow> {/* positionを追加 */}
+      <planeGeometry args={[700, 700, 32, 32]} />
       <meshStandardMaterial color={0x555555} side={THREE.DoubleSide} />
     </mesh>
   );
@@ -55,7 +55,17 @@ const ModelViewer2 = () => {
       <h1>THE DELORIAN & SUBARU</h1>
       <Canvas shadows camera={{ position: cameraPosition, fov: 75, near: 0.1, far: 1000 }}>
         <ambientLight intensity={0.5} />
-        <directionalLight position={[1, 1, 1]} intensity={1} castShadow />
+        <spotLight
+          position={[0, 150, 0]} // ライトの位置（真上）
+          angle={3} // ライトの広がり
+          penumbra={5} // ライトの境界のぼかし
+          intensity={500000} // ライトの強度
+          castShadow
+          shadow-mapSize-width={1024} // 影の解像度
+          shadow-mapSize-height={1024} // 影の解像度
+          shadow-bias={-0.0001}
+          target-position={[0,0,0]} //ライトの照射先
+        />
         <Suspense fallback={null}>
           <Model url="delorian_88mph/optimized_scene.gltf" scale={delorianScale} position={delorianPosition} />
         </Suspense>

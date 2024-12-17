@@ -49,7 +49,7 @@ function Camera({ position, lookAt }) {
 }
 
 const ModelViewer = () => {
-  const cameraPosition = [2, 1, 5];
+  const cameraPosition = [2, 2, 7];
   const lookAtPosition = [0, 0, 0];
 
   return (
@@ -57,7 +57,17 @@ const ModelViewer = () => {
       <h1>THE MILLENNIUM FALCON</h1>
       <Canvas shadows camera={{ fov: 75, near: 0.1, far: 1000 }}>
         <ambientLight intensity={0.5} />
-        <directionalLight position={[1, 1, 1]} intensity={1} castShadow />
+        <spotLight
+          position={[0, 10, 0]} // ライトの位置（真上）
+          angle={0.5} // ライトの広がり
+          penumbra={0.5} // ライトの境界のぼかし
+          intensity={500} // ライトの強度
+          castShadow
+          shadow-mapSize-width={1024} // 影の解像度
+          shadow-mapSize-height={1024} // 影の解像度
+          shadow-bias={-0.0001}
+          target-position={[0,0,0]} //ライトの照射先
+        />
         <Camera position={cameraPosition} lookAt={lookAtPosition} />
         <Suspense fallback={null}>
           <Model url="millennium_falcon/optimized_scene.gltf" />
