@@ -10,7 +10,7 @@ body #root{
   padding: 0;
   
 }
-div {
+#app-container {
   height: 100%;
   width: 100%;
 }

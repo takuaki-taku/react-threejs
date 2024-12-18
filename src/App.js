@@ -8,7 +8,7 @@ import ModelViewer2 from './components/ModelViewer2';
 function App() {
   return (
     <Router>
-      <div>
+      <div id="app-container">
         <nav>
           <ul>
             <li>
