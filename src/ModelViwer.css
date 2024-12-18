@@ -18,6 +18,25 @@ body {
     padding: 2rem; /* rem単位を使用 */
 }
 
+.container {
+    display: flex;
+    justify-content: center; /* 水平方向中央揃え */
+    align-items: center;     /* 垂直方向中央揃え */
+    width: 100vw;            /* 画面幅いっぱい */
+    height: 100vh;           /* 画面高さいっぱい */
+    position: relative;     /* loading要素の基準位置 */
+  }
+  
+.loading {
+position: absolute;      /* 親コンテナに対して絶対配置 */
+font-size: 2em;         /* 文字サイズ */
+z-index: 10;             /* Canvasより前面に表示 */
+background-color: rgba(0, 0, 0, 0.5); /* 背景色（半透明の黒） */
+padding: 10px 20px;      /* パディング */
+border-radius: 5px;      /* 角丸 */
+color: white;           /* 文字色 */
+}
+
 .border {
     background: linear-gradient(90deg, gray, 90%, black);
     height: 2px;

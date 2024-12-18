@@ -1,9 +1,9 @@
-import React, { Suspense, useEffect, useRef } from 'react';
+import React, { Suspense, useEffect, useRef} from 'react';
 import { Canvas } from '@react-three/fiber';
 import { useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, Loader } from '@react-three/drei';
 import * as THREE from 'three'; // THREEをインポート
 import '../ModelViwer.css';
 
@@ -51,9 +51,10 @@ const ModelViewer2 = () => {
   const subaruPosition = [-120, -45, 0];
 
   return (
+  
     <div style={{ width: '100vw', height: '100vh' }}>
       <h1>THE DELORIAN & SUBARU</h1>
-      <Canvas shadows camera={{ position: cameraPosition, fov: 75, near: 0.1, far: 1000 }}>
+      <Canvas shadows camera={{ position: cameraPosition, fov: 75, near: 0.1, far: 1000 }} >
         <ambientLight intensity={0.5} />
         <spotLight
           position={[100, 150, 15]} // ライトの位置（真上）
@@ -75,7 +76,9 @@ const ModelViewer2 = () => {
         <Ground /> {/* Groundコンポーネントを追加 */}
         <OrbitControls target={lookAtPosition} /> {/* lookAtPositionを使用 */}
       </Canvas>
+      <Loader />
     </div>
+    
   );
 };
 

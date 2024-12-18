@@ -3,7 +3,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, Loader } from '@react-three/drei';
 import * as THREE from 'three'; // THREEをインポート
 import '../ModelViwer.css';
 
@@ -48,6 +48,7 @@ function Camera({ position, lookAt }) {
   return null;
 }
 
+
 const ModelViewer = () => {
   const cameraPosition = [2, 2, 7];
   const lookAtPosition = [0, 0, 0];
@@ -72,9 +73,11 @@ const ModelViewer = () => {
         <Suspense fallback={null}>
           <Model url="millennium_falcon/optimized_scene.gltf" />
         </Suspense>
+        
         <Ground /> {/* Groundコンポーネントを追加 */}
         <OrbitControls target={[-1, -1, 0]} />
       </Canvas>
+      <Loader />
     </div>
   );
 };
